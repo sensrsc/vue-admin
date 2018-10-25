@@ -14,3 +14,4 @@ use Illuminate\Http\Request;
 */
 
 Route::post('login', 'MemberController@login');
+Route::post('project', 'ProjectController@create');

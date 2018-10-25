@@ -1,9 +1,7 @@
 <template>
   <div class="animated fadeIn">
     <b-row>
-      <b-col
-        sm="6"
-        md="4">
+      <b-col sm="6" md="4">
         <b-card
           title=""
           style="max-width: 20rem;"
@@ -15,12 +13,6 @@
             type="button"
             variant="outline-primary"
             @click="largeModal = true"><i class="fa fa-magic"/>&nbsp; Create New Project</b-button>
-          <!-- <b-modal
-            v-model="largeModal"
-            title="Project Settings"
-            size="lg"
-            class="text-left"
-            @ok="largeModal = false"> -->
           <b-modal
             v-model="largeModal"
             title="Project Settings"
@@ -34,47 +26,6 @@
                 v-model="name"
                 type="text"
                 placeholder="Enter your project name"/>
-            </b-form-group>
-            <b-form-group>
-              <label for="vat">VAT</label>
-              <b-form-input
-                id="vat"
-                type="text"
-                placeholder="PL1234567890"/>
-            </b-form-group>
-            <b-form-group>
-              <label for="street">Street</label>
-              <b-form-input
-                id="street"
-                type="text"
-                placeholder="Enter street name"/>
-            </b-form-group>
-            <b-row>
-              <b-col sm="8">
-                <b-form-group>
-                  <label for="city">City</label>
-                  <b-form-input
-                    id="city"
-                    type="text"
-                    placeholder="Enter your city"/>
-                </b-form-group>
-              </b-col>
-              <b-col sm="4">
-                <b-form-group>
-                  <label for="postal-code">Postal Code</label>
-                  <b-form-input
-                    id="postal-code"
-                    type="text"
-                    placeholder="Postal Code"/>
-                </b-form-group>
-              </b-col>
-            </b-row>
-            <b-form-group>
-              <label for="country">Country</label>
-              <b-form-input
-                id="country"
-                type="text"
-                placeholder="Country name"/>
             </b-form-group>
           </b-modal>
         </b-card>
@@ -94,7 +45,15 @@ export default {
   },
   methods: {
     projectCreate() {
-      console.log(this.name);
+      new Promise((resolve, reject) => {
+        window.axios.post('http://127.0.0.1:8001/api/project', { project_name: this.name })
+          .then(response => {
+            console.log(response);
+          })
+          .catch(error => {
+            reject(error);
+          });
+      });
     }
   }
 };
