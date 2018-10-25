@@ -36,7 +36,6 @@
     "eslint-plugin-varspacing": "^1.2.1",
     "eslint-plugin-vue": "^4.7.1",
     "laravel-mix": "^2.1.14",
-    "pre-commit": "^1.2.2",
     "prettier": "1.12.1",
     "stylelint": "^9.5.0",
     "stylelint-config-sass-guidelines": "^5.2.0",
