@@ -11,7 +11,7 @@ try {
   window.Vue = require('vue');
 
   // Lodash Improvement
-  window._.mixin({ pascalCase: _.flow(_.camelCase, _.upperFirst) });
+  window._.mixin({ pascalCase: window._.flow(window._.camelCase, window._.upperFirst) });
 
   // Animate CSS
   window.$.fn.extend({
@@ -30,7 +30,7 @@ try {
       })(document.createElement('div'));
 
       this.addClass(`animated ${animationName}`).one(animationEnd, function() {
-        $(this).removeClass(`animated ${animationName}`);
+        window.$(this).removeClass(`animated ${animationName}`);
 
         if (typeof callback === 'function') callback();
       });
@@ -42,8 +42,8 @@ try {
   require('bootstrap');
   require('select2');
 
-  $.fn.select2.defaults.set('theme', 'bootstrap4');
-  $.fn.select2.defaults.set('width', '100%');
+  window.$.fn.select2.defaults.set('theme', 'bootstrap4');
+  window.$.fn.select2.defaults.set('width', '100%');
 } catch (err) {
   console.error(err);
 }
