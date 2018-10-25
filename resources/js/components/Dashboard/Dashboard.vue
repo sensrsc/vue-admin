@@ -78,8 +78,7 @@
             </b-col>
             <b-col
               sm="12"
-              lg="6">
-            </b-col>
+              lg="6"/>
           </b-row>
         </b-card>
       </b-col>
@@ -162,8 +161,7 @@
             </b-col>
             <b-col
               sm="12"
-              lg="6">
-            </b-col>
+              lg="6"/>
           </b-row>
         </b-card>
       </b-col>
