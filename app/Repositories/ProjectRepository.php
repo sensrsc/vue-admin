@@ -17,4 +17,9 @@ class ProjectRepository
     {
         return $this->project->create($attributes);
     }
+
+    public function index()
+    {
+        return $this->project->all();
+    }
 }

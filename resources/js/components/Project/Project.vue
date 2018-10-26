@@ -1,6 +1,20 @@
 <template>
   <div class="animated fadeIn">
     <b-row>
+      <b-col
+        v-for="project in this.$store.state.projects"
+        :key="project.project_name"
+        sm="6"
+        md="4">
+        <b-card
+          title=""
+          style="max-width: 20rem;"
+          class="card-accent-primary text-center">
+          <p class="card-text">
+            {{ project.project_name }}
+          </p>
+        </b-card>
+      </b-col>
       <b-col sm="6" md="4">
         <b-card
           title=""
@@ -43,17 +57,20 @@ export default {
       largeModal: false
     };
   },
+  computed: {
+    projects() {
+      return this.$store.getters.projects;
+    }
+  },
+  created() {
+    this.$store.dispatch('loadProjects');
+  },
   methods: {
     projectCreate() {
-      new Promise((resolve, reject) => {
-        window.axios.post('http://127.0.0.1:8001/api/project', { project_name: this.name })
-          .then(response => {
-            console.log(response);
-          })
-          .catch(error => {
-            reject(error);
-          });
-      });
+      this.$store.dispatch('createProject', { name: this.name })
+        .then((response) => {
+          this.$store.dispatch('loadProjects');
+        });
     }
   }
 };

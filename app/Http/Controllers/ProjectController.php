@@ -18,4 +18,9 @@ class ProjectController extends Controller
     {
         return $this->project->create($request->all());
     }
+
+    public function index(Request $request)
+    {
+        return $this->project->index();
+    }
 }
