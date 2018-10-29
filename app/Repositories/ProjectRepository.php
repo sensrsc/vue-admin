@@ -15,7 +15,10 @@ class ProjectRepository
 
     public function create($attributes)
     {
-        return $this->project->create($attributes);
+        if($this->project->create($attributes)) {
+            return $this->project->all();
+        }
+        return 'fail';
     }
 
     public function index()

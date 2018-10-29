@@ -32,6 +32,7 @@ export default new Vuex.Store({
             resolve();
           })
           .catch(error => {
+            console.log(error);
             reject(error);
           });
       });
@@ -52,6 +53,7 @@ export default new Vuex.Store({
       return new Promise((resolve, reject) => {
         apiCreateProject(name)
           .then(response => {
+            commit('setProjects', response.data);
             resolve();
           })
           .catch(error => {
