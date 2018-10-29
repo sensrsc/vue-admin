@@ -21,7 +21,7 @@
           style="max-width: 20rem;"
           class="card-accent-primary text-center">
           <p class="card-text">
-            Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+            Hint: enter something to create project.
           </p>
           <b-button
             type="button"
@@ -67,10 +67,7 @@ export default {
   },
   methods: {
     projectCreate() {
-      this.$store.dispatch('createProject', { name: this.name })
-        .then((response) => {
-          this.$store.dispatch('loadProjects');
-        });
+      this.$store.dispatch('createProject', { name: this.name });
     }
   }
 };
