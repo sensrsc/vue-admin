@@ -3,16 +3,19 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Repositories\MemberRepository;
 
 class MemberController extends Controller
 {
-    private $service;
+    private $member;
 
-    public function Login(Request $request)
+    public function __construct(MemberRepository $member)
     {
-        return response()->json([
-            'name' => 'Abigail',
-            'state' => 'CA'
-        ]);
+        $this->member = $member;
+    }
+
+    public function login(Request $request)
+    {
+        return $this->member->login($request->all());
     }
 }

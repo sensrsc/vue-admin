@@ -1,7 +1,7 @@
 import config from '../config';
 
-export const apiLogin = ({ username, password }) => {
-  return window.axios.post(config.apiUrl.concat('/api/login'), username, password);
+export const apiLogin = (email, password) => {
+  return window.axios.post(config.apiUrl.concat('/api/login'), { email: email, password: password });
 };
 
 export const apiLoadProjects = () => {

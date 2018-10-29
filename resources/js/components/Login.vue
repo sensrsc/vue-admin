@@ -12,7 +12,7 @@
                 <p class="text-muted">Sign In to your account</p>
                 <b-input-group class="mb-3">
                   <b-input-group-prepend><b-input-group-text><i class="icon-user"/></b-input-group-text></b-input-group-prepend>
-                  <input v-model="username" type="text" class="form-control" placeholder="Username">
+                  <input v-model="email" type="text" class="form-control" placeholder="Email">
                 </b-input-group>
                 <b-input-group class="mb-4">
                   <b-input-group-prepend><b-input-group-text><i class="icon-lock"/></b-input-group-text></b-input-group-prepend>
@@ -58,13 +58,13 @@ export default {
   name: 'Login',
   data() {
     return {
-      username: '',
+      email: '',
       password: ''
     };
   },
   methods: {
     Login() {
-      this.$store.dispatch('handleLogin', { username: this.username, password: this.password })
+      this.$store.dispatch('handleLogin', { email: this.email, password: this.password })
         .then((response) => {
           this.$router.push({ name: 'Home' });
         });

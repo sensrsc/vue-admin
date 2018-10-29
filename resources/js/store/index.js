@@ -9,11 +9,15 @@ import { apiLogin, apiLoadProjects, apiCreateProject } from '../utils/api';
 export default new Vuex.Store({
   state: {
     isLogin: false,
+    user: [],
     projects: []
   },
   mutations: {
     setLoginStatus(state, isLogin) {
       state.isLogin = isLogin;
+    },
+    setUser(state, user) {
+      state.user = user;
     },
     setProjects(state, projects) {
       state.projects = projects;
@@ -23,12 +27,13 @@ export default new Vuex.Store({
     projects: state => state.projects
   },
   actions: {
-    handleLogin({ commit, state }, { username, password }) {
+    handleLogin({ commit, state }, { email, password }) {
       return new Promise((resolve, reject) => {
-        apiLogin(username, password)
+        apiLogin(email, password)
           .then(response => {
             commit('setLoginStatus', true);
-            setCookie(true);
+            commit('setUser', response.data);
+            setCookie(response.data);
             resolve();
           })
           .catch(error => {
